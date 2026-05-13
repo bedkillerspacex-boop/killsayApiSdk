@@ -1,42 +1,45 @@
 # killsayApiSdk
 
-`killsayApiSdk` 是从 `Killsay Reborn` 拆出来的精简版 Fabric 客户端模组。
+`killsayApiSdk` is a stripped Fabric client module extracted from `Killsay Reborn`.
 
-这个目录只保留两部分：
+It keeps only:
 
-- 检测模块
-- 对外 API
+- detection
+- tracking
+- public API
 
-已经移除的内容：
+It removes:
 
-- 所有 GUI
-- 所有 say 发送逻辑
+- GUI
+- say sending
 - wanxin
 - gufa
 - auto reply
 - auto report
 - HUD
 
-当前保留的检测能力：
-
-- 玩家攻击后进入追踪窗口
-- 投掷物接触追踪
-- 聊天命中补追踪
-- 玩家死亡检测
-- 胜利状态检测
-- 冷却状态维护
-
-对外入口类：
-
-- `mojang.minecraft.uuidget.KillsayEvents`
-
-主要源码：
+Core sources:
 
 - `src/main/java/mojang/minecraft/uuidget/ClientInitializer.java`
 - `src/main/java/mojang/minecraft/uuidget/KillsayEvents.java`
 - `src/main/java/mojang/minecraft/uuidget/ClientOptions.java`
 - `src/main/java/mojang/minecraft/uuidget/HealthTracker.java`
 
-构建产物名：
+Build artifact:
 
 - `killsayApiSdk`
+
+## License Restrictions
+
+This project is not MIT anymore.
+
+The repository is distributed under `KillsayApiSdk Restricted License v1.0`.
+
+Main restrictions:
+
+- commercial use is forbidden
+- adding new functionality into this project is forbidden
+- restoring removed modules is forbidden
+- the only allowed extension path is using the existing public API from external code
+
+See `LICENSE` for the full text.

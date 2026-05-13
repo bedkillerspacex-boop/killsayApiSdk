@@ -5,7 +5,7 @@
   "name": "killsayApiSdk",
   "description": "Detection module and public API extracted from Killsay Reborn.",
   "authors": ["you"],
-  "license": "MIT",
+  "license": "KillsayApiSdk Restricted License v1.0",
   "environment": "client",
   "entrypoints": {
     "client": ["mojang.minecraft.uuidget.ClientInitializer"]
