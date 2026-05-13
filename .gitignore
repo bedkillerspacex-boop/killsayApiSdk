@@ -1,0 +1,19 @@
+# Gradle
+.gradle/
+build/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Development run dir (e.g., Fabric/Forge)
+run/
+
+# Local tools / scratch
+.claude/
+tmp_edit.py
+
+# OS
+.DS_Store
+Thumbs.db

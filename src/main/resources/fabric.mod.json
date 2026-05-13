@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "killsayapisdk",
+  "version": "${version}",
+  "name": "killsayApiSdk",
+  "description": "Detection module and public API extracted from Killsay Reborn.",
+  "authors": ["you"],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["mojang.minecraft.uuidget.ClientInitializer"]
+  },
+  "mixins": [
+    "uuidget.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.4",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
