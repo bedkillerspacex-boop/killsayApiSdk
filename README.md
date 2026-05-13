@@ -1,5 +1,5 @@
 # killsayApiSdk
-
+写readme的傻逼gpt是洋人
 `killsayApiSdk` is a stripped Fabric client module extracted from `Killsay Reborn`.
 
 It keeps only:
