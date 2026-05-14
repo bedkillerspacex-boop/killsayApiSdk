@@ -16,7 +16,6 @@ public final class ClientOptions {
     public static final double TRACKING_DEFAULT_EXPAND = 0.5;
 
     private static boolean enabled = true;
-    private static double cooldownSeconds = 3.0;
     private static double windowSeconds = 5.0;
     private static boolean chatProjectileDetect = false;
     private static boolean transferGuard = true;
@@ -26,7 +25,6 @@ public final class ClientOptions {
     private ClientOptions() {}
 
     public static boolean enabled() { return enabled; }
-    public static double cooldownSeconds() { return cooldownSeconds; }
     public static double windowSeconds() { return windowSeconds; }
     public static boolean chatProjectileDetect() { return chatProjectileDetect; }
     public static boolean transferGuard() { return transferGuard; }
@@ -53,11 +51,6 @@ public final class ClientOptions {
         transferGuard = Boolean.parseBoolean(p.getProperty("transferGuard", "true"));
         debug = Boolean.parseBoolean(p.getProperty("debug", "false"));
         try {
-            cooldownSeconds = Math.max(0, Double.parseDouble(p.getProperty("cooldownSeconds", "3")));
-        } catch (NumberFormatException e) {
-            cooldownSeconds = 3.0;
-        }
-        try {
             windowSeconds = Math.max(0.5, Double.parseDouble(p.getProperty("windowSeconds", "5")));
         } catch (NumberFormatException e) {
             windowSeconds = 5.0;
@@ -82,7 +75,6 @@ public final class ClientOptions {
         p.setProperty("chatProjectileDetect", Boolean.toString(chatProjectileDetect));
         p.setProperty("transferGuard", Boolean.toString(transferGuard));
         p.setProperty("debug", Boolean.toString(debug));
-        p.setProperty("cooldownSeconds", Double.toString(cooldownSeconds));
         p.setProperty("windowSeconds", Double.toString(windowSeconds));
         p.setProperty("projectileConfidence",
                 projectileConfidence < 0 ? "default" : Double.toString(projectileConfidence));

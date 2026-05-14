@@ -38,15 +38,6 @@ public final class KillsayEvents {
         }
     }
 
-    static void fireOnCooldownStart(long cooldownMs) {
-        for (KillStatusListener listener : statusListeners) {
-            try {
-                listener.onCooldownStart(cooldownMs);
-            } catch (Throwable ignored) {
-            }
-        }
-    }
-
     static void fireOnDone(String victimName) {
         for (KillStatusListener listener : statusListeners) {
             try {
@@ -78,10 +69,6 @@ public final class KillsayEvents {
         return ClientInitializer.isEnabled();
     }
 
-    public static long getCooldownRemainingMs() {
-        return ClientInitializer.getCooldownRemainingMs();
-    }
-
     public static boolean isDeadPause() {
         return ClientInitializer.isDeadPause();
     }
@@ -108,7 +95,6 @@ public final class KillsayEvents {
     }
 
     public interface KillStatusListener {
-        default void onCooldownStart(long cooldownMs) {}
         default void onDone(String victimName) {}
         default void onDeath() {}
         default void onVictory() {}
@@ -120,7 +106,6 @@ public final class KillsayEvents {
             boolean enabled,
             boolean chatProjectileDetect,
             boolean transferGuard,
-            double windowSeconds,
-            double cooldownSeconds
+            double windowSeconds
     ) {}
 }

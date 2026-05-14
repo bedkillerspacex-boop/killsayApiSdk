@@ -9,7 +9,6 @@
 | 方法 | 返回值 | 说明 |
 |------|------|------|
 | `isEnabled()` | `boolean` | 检测模块是否启用 |
-| `getCooldownRemainingMs()` | `long` | 当前剩余冷却时间，单位毫秒 |
 | `isDeadPause()` | `boolean` | 是否处于死亡暂停状态 |
 | `isVictory()` | `boolean` | 是否处于胜利状态 |
 | `getDoneName()` | `String` | 最近一次检测完成的目标玩家名 |
@@ -21,13 +20,6 @@
 ### `isEnabled()`
 
 返回检测模块总开关当前值。
-
-### `getCooldownRemainingMs()`
-
-返回剩余冷却时间。
-
-- 返回 `0` 表示当前不在冷却期
-- 冷却由一次检测完成后开始计时
 
 ### `isDeadPause()`
 
@@ -49,12 +41,11 @@
 ```java
 if (!KillsayEvents.isEnabled()) return;
 
-long cd = KillsayEvents.getCooldownRemainingMs();
-if (cd > 0) {
-    System.out.println("cooldown: " + cd);
-}
-
 if (KillsayEvents.isDeadPause()) {
     System.out.println("dead pause");
+}
+
+if (KillsayEvents.isVictory()) {
+    System.out.println("victory");
 }
 ```

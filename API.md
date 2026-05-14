@@ -15,15 +15,16 @@
 - GUI
 - HUD
 - 所有聊天发送逻辑
+- 所有发送后状态 API
 
 ## API 列表
 
 | 文档 | 类型 | 用途 |
 |------|------|------|
 | [UserKill](api/UserKill.md) | 事件监听 | 检测完成后，获得目标玩家名 |
-| [KillStatusListener](api/KillStatusListener.md) | 事件监听 | 监听冷却开始 / 检测完成 / 玩家死亡 / 游戏胜利 |
+| [KillStatusListener](api/KillStatusListener.md) | 事件监听 | 监听检测完成 / 玩家死亡 / 游戏胜利 |
 | [PlayerTrackingInfo](api/PlayerTrackingInfo.md) | 数据查询 | 获取当前正在追踪的目标玩家列表 |
-| [GameStateQuery](api/GameStateQuery.md) | 状态查询 | 查询冷却、死亡暂停、胜利、最近一次完成目标等状态 |
+| [GameStateQuery](api/GameStateQuery.md) | 状态查询 | 查询死亡暂停、胜利、最近一次完成目标等状态 |
 | [ConfigSnapshot](api/ConfigSnapshot.md) | 配置查询 | 获取当前检测配置快照 |
 
 ## 快速开始
@@ -34,8 +35,6 @@ import mojang.minecraft.uuidget.KillsayEvents;
 KillsayEvents.registerUserKill(victimName -> {
     System.out.println("detected: " + victimName);
 });
-
-long cooldown = KillsayEvents.getCooldownRemainingMs();
 
 KillsayEvents.getTrackedPlayers().forEach(info ->
     System.out.println(info.name() + " [" + info.source() + "]")

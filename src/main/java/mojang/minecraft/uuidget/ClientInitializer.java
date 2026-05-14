@@ -26,7 +26,6 @@ public final class ClientInitializer implements ClientModInitializer {
     private static final Pattern DAMAGE_MSG = Pattern.compile("玩家\\s+(\\S+?)\\s+受到");
     private static final long DEATH_VOTE_WINDOW_MS = 4000L;
 
-    private static long cooldownUntil = 0L;
     private static long doneUntil = 0L;
     private static long deathUntil = 0L;
     private static long victoryUntil = 0L;
@@ -57,10 +56,6 @@ public final class ClientInitializer implements ClientModInitializer {
             }
             return ActionResult.PASS;
         });
-    }
-
-    public static long getCooldownRemainingMs() {
-        return Math.max(0L, cooldownUntil - System.currentTimeMillis());
     }
 
     public static boolean isDeadPause() {
@@ -315,8 +310,7 @@ public final class ClientInitializer implements ClientModInitializer {
                 ClientOptions.enabled(),
                 ClientOptions.chatProjectileDetect(),
                 ClientOptions.transferGuard(),
-                ClientOptions.windowSeconds(),
-                ClientOptions.cooldownSeconds()
+                ClientOptions.windowSeconds()
         );
     }
 
@@ -399,7 +393,6 @@ public final class ClientInitializer implements ClientModInitializer {
         chatWatch.clear();
         trackedProj.clear();
         HealthTracker.clear();
-        cooldownUntil = System.currentTimeMillis() + 5000L;
         deathVoteTp = 0L;
         deathVoteTitle = 0L;
         deathVoteSpectator = 0L;
@@ -412,7 +405,6 @@ public final class ClientInitializer implements ClientModInitializer {
         chatWatch.clear();
         trackedProj.clear();
         HealthTracker.clear();
-        cooldownUntil = Math.max(cooldownUntil, now + 5000L);
         deathUntil = now + 5000L;
         deathVoteTp = 0L;
         deathVoteTitle = 0L;
@@ -454,9 +446,6 @@ public final class ClientInitializer implements ClientModInitializer {
         recentKillUntil = System.currentTimeMillis() + 500L;
         KillsayEvents.fireUserKill(victimName);
         KillsayEvents.fireOnDone(victimName);
-        long cooldownMs = (long) (ClientOptions.cooldownSeconds() * 1000.0);
-        cooldownUntil = System.currentTimeMillis() + cooldownMs;
-        KillsayEvents.fireOnCooldownStart(cooldownMs);
     }
 
     private static PlayerEntity findPlayerByName(MinecraftClient mc, String name) {
